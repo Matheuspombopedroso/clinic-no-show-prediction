@@ -217,9 +217,9 @@ and 2.343 ms for 50 rows.
 - **On this machine, single-request traffic is limited by the Ray Serve
   proxy hop** (about 15 ms per request; 69.5–129.4 req/s across all Serve
   configurations), not by the model (about 2 ms). A single uvicorn process
-  without Ray was faster for this workload on one laptop. Ray Serve's
-  benefits (replicas across processes and nodes, declarative scaling) need
-  more hardware than one 4-core laptop to pay off.
+  without Ray was faster for this workload on one laptop. This benchmark
+  cannot show how Ray Serve behaves with more cores, several proxies or
+  several nodes, because none of those were available.
 - **Dynamic batching (`@serve.batch`) gave no consistent throughput gain**
   here, because the model call was not the bottleneck. It added about 14–15 ms
   to a lone request, more than the configured 5 ms wait (likely Windows
@@ -238,7 +238,7 @@ and 2.343 ms for 50 rows.
   baseline.
 - **Logic outside the framework.** `PredictionService` knows nothing about
   Ray or HTTP. Tests run in seconds without a cluster, and the Serve layer
-  stays about 100 lines.
+  (`serve_app.py`) is about 145 lines including comments.
 - **Two feature implementations, one parity test.** pandas is convenient
   for training. For a 1-row request it added about 11 ms, several times the
   cost of the model call, so serving uses a NumPy path. A test asserts both produce

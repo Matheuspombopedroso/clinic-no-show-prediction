@@ -46,8 +46,10 @@ class ServeSettings:
         host: HTTP bind host for the Serve proxy.
         port: HTTP port for the Serve proxy.
         access_log: Log one line per request in the proxy and replicas. Off by
-            default: at hundreds of requests per second the logging itself
-            (formatting + shipping logs to the driver) costs measurable CPU.
+            default so that, at hundreds of requests per second, CPU is not
+            spent formatting log lines and shipping them to the driver. (It was
+            turned off together with other harness fixes, so its effect alone
+            was not measured.)
     """
 
     model_dir: Path = DEFAULT_MODEL_DIR

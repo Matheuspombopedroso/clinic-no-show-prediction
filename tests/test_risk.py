@@ -10,6 +10,7 @@ from noshow.risk import HIGH_THRESHOLD, MEDIUM_THRESHOLD, RECOMMENDED_ACTIONS, r
 
 
 def test_documented_threshold_values() -> None:
+    """Thresholds match the values documented in README and docs."""
     # If these change, README and docs/04-serving.md must change too.
     assert MEDIUM_THRESHOLD == 0.20
     assert HIGH_THRESHOLD == 0.45
@@ -27,16 +28,19 @@ def test_documented_threshold_values() -> None:
     ],
 )
 def test_risk_level_boundaries(probability: float, expected: str) -> None:
+    """Risk level boundaries."""
     assert risk_level(probability) == expected
 
 
 @pytest.mark.parametrize("bad", [-0.01, 1.01, math.nan])
 def test_out_of_range_probability_raises(bad: float) -> None:
+    """Out of range probability raises."""
     with pytest.raises(ValueError):
         risk_level(bad)
 
 
 def test_every_level_has_an_action() -> None:
+    """Every level has an action."""
     for level in ("low", "medium", "high"):
         assert recommended_action(level) == RECOMMENDED_ACTIONS[level]
         assert recommended_action(level)

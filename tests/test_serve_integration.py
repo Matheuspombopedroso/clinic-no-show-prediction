@@ -22,6 +22,7 @@ URL = f"http://127.0.0.1:{PORT}"
 
 @pytest.fixture(scope="module")
 def serve_url(trained_artifact: Path):  # type: ignore[no-untyped-def]
+    """Start a local 2-replica Ray Serve app for this module and yield its URL."""
     ray = pytest.importorskip("ray")
     from ray import serve
 
@@ -38,6 +39,7 @@ def serve_url(trained_artifact: Path):  # type: ignore[no-untyped-def]
 
 
 def test_single_and_batch(serve_url: str) -> None:
+    """/predict and /predict/batch work through a real Serve deployment and keep ids in order."""
     pool = appointment_pool()
     single = httpx.post(f"{serve_url}/predict", json=pool[0], timeout=30).json()
     assert single["appointment_id"] == pool[0]["appointment_id"]

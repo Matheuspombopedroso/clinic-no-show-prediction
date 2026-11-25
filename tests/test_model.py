@@ -15,6 +15,7 @@ from tests.conftest import make_appointment
 
 
 def test_time_split_has_no_overlap() -> None:
+    """Time split has no overlap."""
     df = pd.DataFrame({"scheduled_at": pd.date_range("2025-01-01", periods=100, freq="D")[::-1]})
     train, test = time_split(df, 0.2)
     assert len(test) == 20
@@ -22,6 +23,7 @@ def test_time_split_has_no_overlap() -> None:
 
 
 def test_artifact_contains_version_and_metrics(trained_artifact: Path) -> None:
+    """Artifact contains version and metrics."""
     meta = json.loads((trained_artifact / METADATA_FILE).read_text())
     assert meta["version"] == "9.9.9"
     for key in ("roc_auc", "pr_auc", "brier"):
@@ -29,11 +31,13 @@ def test_artifact_contains_version_and_metrics(trained_artifact: Path) -> None:
 
 
 def test_model_beats_chance_on_synthetic_data(trained_artifact: Path) -> None:
+    """Model beats chance on synthetic data."""
     meta = json.loads((trained_artifact / METADATA_FILE).read_text())
     assert meta["test_metrics"]["roc_auc"] > 0.6
 
 
 def test_feature_mismatch_is_refused(trained_artifact: Path, tmp_path: Path) -> None:
+    """Feature mismatch is refused."""
     for name in ("model.json", METADATA_FILE):
         (tmp_path / name).write_bytes((trained_artifact / name).read_bytes())
     meta = json.loads((tmp_path / METADATA_FILE).read_text())

@@ -27,10 +27,12 @@ class SingleUser(FastHttpUser):
     """Sends one appointment per request (exercises ``@serve.batch``)."""
 
     def on_start(self) -> None:
+        """Give each simulated user its own random generator."""
         self.rng = random.Random(id(self))
 
     @task
     def predict(self) -> None:
+        """POST one appointment to /predict."""
         self.client.post("/predict", json=single_payload(self.rng), name="/predict")
 
 
@@ -38,8 +40,10 @@ class BatchUser(FastHttpUser):
     """Sends ``LOCUST_BATCH_SIZE`` appointments per request."""
 
     def on_start(self) -> None:
+        """Give each simulated user its own random generator."""
         self.rng = random.Random(id(self))
 
     @task
     def predict_batch(self) -> None:
+        """POST a batch of appointments to /predict/batch."""
         self.client.post("/predict/batch", json=batch_payload(self.rng, BATCH_SIZE), name="/predict/batch")

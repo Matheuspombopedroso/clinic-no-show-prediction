@@ -24,11 +24,13 @@ def _features(**overrides: object) -> dict[str, float]:
 
 
 def test_columns_and_order_are_stable() -> None:
+    """Columns and order are stable."""
     frame = build_features(appointments_to_frame([make_appointment()]))
     assert list(frame.columns) == FEATURE_COLUMNS
 
 
 def test_lead_time_weekday_and_hour() -> None:
+    """Lead time weekday and hour."""
     f = _features(booked_at="2025-03-03T09:00:00", scheduled_at="2025-03-10T14:30:00")
     assert f["lead_time_days"] == pytest.approx(7 + 5.5 / 24)
     assert f["weekday"] == 0  # 2025-03-10 is a Monday
@@ -36,11 +38,13 @@ def test_lead_time_weekday_and_hour() -> None:
 
 
 def test_same_day_booking_has_fractional_lead_time() -> None:
+    """Same day booking has fractional lead time."""
     f = _features(booked_at="2025-03-10T08:00:00", scheduled_at="2025-03-10T14:00:00")
     assert f["lead_time_days"] == pytest.approx(0.25)
 
 
 def test_new_patient_gets_prior_rate_and_missing_recency() -> None:
+    """New patient gets prior rate and missing recency."""
     f = _features(prior_appointments=0, prior_no_shows=0, prior_cancellations=0, days_since_last_visit=None)
     assert f["is_new_patient"] == 1
     assert f["prior_no_show_rate"] == pytest.approx(PRIOR_NO_SHOW_RATE)
@@ -48,6 +52,7 @@ def test_new_patient_gets_prior_rate_and_missing_recency() -> None:
 
 
 def test_smoothed_rate_moves_toward_observed_rate_with_history() -> None:
+    """Smoothed rate moves toward observed rate with history."""
     few = smoothed_rate(np.array([1]), np.array([1]), 0.2)[0]
     many = smoothed_rate(np.array([100]), np.array([100]), 0.2)[0]
     assert 0.2 < few < many < 1.0
@@ -55,6 +60,7 @@ def test_smoothed_rate_moves_toward_observed_rate_with_history() -> None:
 
 
 def test_confirmed_is_binary() -> None:
+    """Confirmed is binary."""
     assert _features(confirmed=True)["confirmed"] == 1
     assert _features(confirmed=False)["confirmed"] == 0
 
@@ -68,6 +74,7 @@ def test_confirmed_is_binary() -> None:
     ],
 )
 def test_invalid_inputs_are_rejected(overrides: dict[str, object]) -> None:
+    """Invalid inputs are rejected."""
     with pytest.raises(ValueError):
         make_appointment(**overrides)
 
@@ -82,6 +89,7 @@ def test_generated_history_has_no_leakage(small_dataset) -> None:  # type: ignor
 
 
 def test_generator_is_deterministic() -> None:
+    """Generator is deterministic."""
     from noshow.data import generate
 
     a, b = generate(n_patients=50, seed=1), generate(n_patients=50, seed=1)

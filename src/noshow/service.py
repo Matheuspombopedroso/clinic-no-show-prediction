@@ -29,15 +29,18 @@ class ProbabilityModel(Protocol):
     """Anything with a version and a ``predict_proba`` (real model or a test fake)."""
 
     @property
-    def version(self) -> str: ...
+    def version(self) -> str:
+        """Model version string reported in responses."""
 
-    def predict_proba(self, features: np.ndarray) -> np.ndarray: ...
+    def predict_proba(self, features: np.ndarray) -> np.ndarray:
+        """Return one no-show probability per feature row."""
 
 
 class PredictionService:
     """Turns appointments into predictions using a loaded model."""
 
     def __init__(self, model: ProbabilityModel) -> None:
+        """Wrap a loaded model (real or fake) that will answer all predictions."""
         self.model = model
 
     @property

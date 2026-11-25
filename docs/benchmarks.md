@@ -138,11 +138,11 @@ saved results\benchmark_20261125-182526.json
 
 ## 3. First run (discarded as the headline, kept for transparency)
 
-The first run used the same service with three problems in the harness:
+The first complete run used the same service code, including the NumPy
+fast path, but had two problems in the harness:
 
 - per-request access logs were on and streamed to the driver process;
-- the async load client ran inside the Ray driver process;
-- the pandas feature path was still in use.
+- the async load client ran inside the Ray driver process.
 
 It measured mostly the harness. For example, `/predict` at 1 replica with 32
 clients gave 38.0 req/s with p50 529.76 ms. It also seemed to show 4
@@ -184,10 +184,13 @@ replicas as slower than 1. Raw output:
 saved results\benchmark_20261125-160147.json
 ```
 
-An earlier attempt before that one was aborted. It used port 8000, which
-another local process was also hitting, and the generator had a bug that
-produced invalid payloads (negative `days_since_last_visit`). Both were
-fixed, and no numbers from it are used.
+An earlier attempt before that one was aborted, and no numbers from it are
+used. It ran on port 8000, which another local process was also hitting. The
+generator had a bug that produced invalid payloads (negative
+`days_since_last_visit`). Features were still built with pandas, and the replicas reported a mean of
+155.426 ms server-side time per `/predict` request (32 clients, batch
+queueing included). All three were fixed before
+the run above.
 
 ## What the numbers show
 

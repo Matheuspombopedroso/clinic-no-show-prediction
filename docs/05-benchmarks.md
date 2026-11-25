@@ -70,12 +70,14 @@ python -m bench.microbench --repeat 300
 
 ### Lessons from the first run
 
-The first run measured the harness more than the service. Three things were
-wrong:
+The first complete run measured the harness more than the service. Two
+things were wrong:
 
 - the async client ran inside the Ray driver process;
-- access logs for every request were streamed to that same process;
-- feature building still used pandas.
+- access logs for every request were streamed to that same process.
+
+An aborted attempt before it also still built features with pandas, which
+is why the NumPy fast path exists.
 
 The runner now launches clients as subprocesses, starts Ray with
 `log_to_driver=False`, and turns access logs off (`ACCESS_LOG=false`). The

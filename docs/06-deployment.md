@@ -57,6 +57,9 @@ Settings explained in `docker-compose.yml`:
 `serve_config.yaml` is the declarative alternative to env vars
 (`serve run serve_config.yaml`, or `serve deploy` against a running Ray
 cluster). Its `args:` block is passed to `noshow.serve_app:app_builder`.
+`serve run serve_config.yaml` was run from the repository root on the
+development machine. It started 2 replicas and answered `/health` and
+`/predict` correctly.
 
 ## CI
 

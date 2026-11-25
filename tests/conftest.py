@@ -31,6 +31,7 @@ class FakeModel:
     version = "test-0.0.0"
 
     def predict_proba(self, features: np.ndarray) -> np.ndarray:
+        """Map prior_appointments 0/1/>=2 to probabilities 0.05/0.30/0.80."""
         assert features.shape[1] == len(FEATURE_COLUMNS)
         prior = features[:, FEATURE_COLUMNS.index("prior_appointments")]
         return np.select([prior == 0, prior == 1], [0.05, 0.30], default=0.80)
@@ -38,11 +39,13 @@ class FakeModel:
 
 @pytest.fixture
 def fake_service() -> PredictionService:
+    """Prediction service backed by :class:`FakeModel` (known outputs)."""
     return PredictionService(FakeModel())
 
 
 @pytest.fixture(scope="session")
 def small_dataset() -> pd.DataFrame:
+    """Small synthetic dataset (400 patients) shared by the whole session."""
     return generate(n_patients=400, seed=7)
 
 
@@ -60,6 +63,7 @@ def trained_artifact(tmp_path_factory: pytest.TempPathFactory, small_dataset: pd
 
 @pytest.fixture(scope="session")
 def real_model(trained_artifact: Path) -> NoShowModel:
+    """Load the session's trained test artifact as a :class:`NoShowModel`."""
     return NoShowModel.load(trained_artifact)
 
 
