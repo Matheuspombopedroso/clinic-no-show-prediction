@@ -1,0 +1,33 @@
+--- 1 replica(s) deployed
+{"tool": "loadtest", "replicas": 1, "mode": "single", "concurrency": 32, "batch_size": 1, "duration_s": 20.0, "requests": 760, "errors": 0, "requests_per_s": 38.0, "predictions_per_s": 38.0, "p50_ms": 529.76, "p95_ms": 2422.37, "p99_ms": 3745.25, "mean_server_inference_ms": 12.466}
+{"tool": "locust", "scenario": "SingleUser", "users": 32, "duration_s": 20, "requests": 1065, "failures": 0, "requests_per_s": 75.1, "p50_ms": 420.0, "p95_ms": 560.0, "p99_ms": 1200.0, "replicas": 1}
+{"tool": "loadtest", "replicas": 1, "mode": "batch", "concurrency": 8, "batch_size": 50, "duration_s": 20.0, "requests": 1030, "errors": 0, "requests_per_s": 51.5, "predictions_per_s": 2575.0, "p50_ms": 144.36, "p95_ms": 265.65, "p99_ms": 379.38, "mean_server_inference_ms": 8.701}
+{"tool": "locust", "scenario": "BatchUser", "users": 8, "duration_s": 20, "requests": 266, "failures": 0, "requests_per_s": 29.3, "p50_ms": 220.0, "p95_ms": 540.0, "p99_ms": 1100.0, "replicas": 1}
+--- 2 replica(s) deployed
+{"tool": "loadtest", "replicas": 2, "mode": "single", "concurrency": 32, "batch_size": 1, "duration_s": 20.0, "requests": 940, "errors": 0, "requests_per_s": 47.0, "predictions_per_s": 47.0, "p50_ms": 398.74, "p95_ms": 2086.2, "p99_ms": 3411.99, "mean_server_inference_ms": 14.352}
+{"tool": "locust", "scenario": "SingleUser", "users": 32, "duration_s": 20, "requests": 1238, "failures": 0, "requests_per_s": 81.6, "p50_ms": 360.0, "p95_ms": 640.0, "p99_ms": 750.0, "replicas": 2}
+{"tool": "loadtest", "replicas": 2, "mode": "batch", "concurrency": 8, "batch_size": 50, "duration_s": 20.0, "requests": 1134, "errors": 0, "requests_per_s": 56.7, "predictions_per_s": 2835.0, "p50_ms": 99.82, "p95_ms": 360.03, "p99_ms": 704.58, "mean_server_inference_ms": 5.758}
+{"tool": "locust", "scenario": "BatchUser", "users": 8, "duration_s": 20, "requests": 458, "failures": 0, "requests_per_s": 46.8, "p50_ms": 150.0, "p95_ms": 260.0, "p99_ms": 870.0, "replicas": 2}
+--- 4 replica(s) deployed
+{"tool": "loadtest", "replicas": 4, "mode": "single", "concurrency": 32, "batch_size": 1, "duration_s": 20.0, "requests": 441, "errors": 0, "requests_per_s": 22.1, "predictions_per_s": 22.1, "p50_ms": 851.12, "p95_ms": 4043.2, "p99_ms": 6824.06, "mean_server_inference_ms": 21.154}
+{"tool": "locust", "scenario": "SingleUser", "users": 32, "duration_s": 20, "requests": 552, "failures": 0, "requests_per_s": 49.9, "p50_ms": 570.0, "p95_ms": 1000.0, "p99_ms": 1600.0, "replicas": 4}
+{"tool": "loadtest", "replicas": 4, "mode": "batch", "concurrency": 8, "batch_size": 50, "duration_s": 20.0, "requests": 516, "errors": 0, "requests_per_s": 25.8, "predictions_per_s": 1290.0, "p50_ms": 211.16, "p95_ms": 761.84, "p99_ms": 1402.13, "mean_server_inference_ms": 12.065}
+{"tool": "locust", "scenario": "BatchUser", "users": 8, "duration_s": 20, "requests": 841, "failures": 0, "requests_per_s": 63.7, "p50_ms": 120.0, "p95_ms": 190.0, "p99_ms": 250.0, "replicas": 4}
+[33m(raylet)[0m Task ServeController.graceful_shutdown failed. There are infinite retries remaining, so the task will be retried. Error: The actor is dead because it was killed by `ray.kill`.
+
+| tool | replicas | endpoint | clients | req/s | predictions/s | p50 ms | p95 ms | p99 ms |
+|---|---|---|---|---|---|---|---|---|
+| loadtest | 1 | /predict | 32 | 38.0 | 38.0 | 529.76 | 2422.37 | 3745.25 |
+| locust | 1 | /predict | 32 | 75.1 | 75.1 | 420.0 | 560.0 | 1200.0 |
+| loadtest | 1 | /predict/batch | 8 | 51.5 | 2575.0 | 144.36 | 265.65 | 379.38 |
+| locust | 1 | /predict/batch | 8 | 29.3 | 1465.0 | 220.0 | 540.0 | 1100.0 |
+| loadtest | 2 | /predict | 32 | 47.0 | 47.0 | 398.74 | 2086.2 | 3411.99 |
+| locust | 2 | /predict | 32 | 81.6 | 81.6 | 360.0 | 640.0 | 750.0 |
+| loadtest | 2 | /predict/batch | 8 | 56.7 | 2835.0 | 99.82 | 360.03 | 704.58 |
+| locust | 2 | /predict/batch | 8 | 46.8 | 2340.0 | 150.0 | 260.0 | 870.0 |
+| loadtest | 4 | /predict | 32 | 22.1 | 22.1 | 851.12 | 4043.2 | 6824.06 |
+| locust | 4 | /predict | 32 | 49.9 | 49.9 | 570.0 | 1000.0 | 1600.0 |
+| loadtest | 4 | /predict/batch | 8 | 25.8 | 1290.0 | 211.16 | 761.84 | 1402.13 |
+| locust | 4 | /predict/batch | 8 | 63.7 | 3185.0 | 120.0 | 190.0 | 250.0 |
+
+saved results\benchmark_20261125-160147.json

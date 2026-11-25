@@ -1,0 +1,5 @@
+| rows | pandas features+model (ms) | fast features+model (ms) | of which model only (ms) |
+|---|---|---|---|
+| 1 | 12.713 | 1.419 | 1.647 |
+| 32 | 13.342 | 1.911 | 1.786 |
+| 50 | 12.798 | 2.343 | 2.082 |

@@ -1,0 +1,72 @@
+--- 1x1 deployed (cpu busy before: 62%)
+{"config": "1x1", "tool": "loadtest", "scenario": "probe", "mode": "single", "concurrency": 1, "batch_size": 1, "duration_s": 15.0, "requests": 921, "errors": 0, "requests_per_s": 61.4, "predictions_per_s": 61.4, "p50_ms": 16.27, "p95_ms": 18.94, "p99_ms": 21.3, "mean_server_inference_ms": 1.646}
+{"config": "1x1", "tool": "loadtest", "scenario": "single", "mode": "single", "concurrency": 32, "batch_size": 1, "duration_s": 15.0, "requests": 1549, "errors": 0, "requests_per_s": 103.3, "predictions_per_s": 103.3, "p50_ms": 196.48, "p95_ms": 914.45, "p99_ms": 1427.94, "mean_server_inference_ms": 2.12}
+{"config": "1x1", "tool": "loadtest", "scenario": "batch50", "mode": "batch", "concurrency": 8, "batch_size": 50, "duration_s": 15.0, "requests": 2125, "errors": 0, "requests_per_s": 141.7, "predictions_per_s": 7083.3, "p50_ms": 54.23, "p95_ms": 73.7, "p99_ms": 97.51, "mean_server_inference_ms": 3.251}
+{"config": "1x1", "tool": "loadtest", "scenario": "batch500", "mode": "batch", "concurrency": 4, "batch_size": 500, "duration_s": 15.0, "requests": 833, "errors": 0, "requests_per_s": 55.5, "predictions_per_s": 27766.7, "p50_ms": 65.54, "p95_ms": 84.4, "p99_ms": 348.4, "mean_server_inference_ms": 13.188}
+{"config": "1x1", "tool": "locust", "scenario": "single", "requests": 1687, "errors": 0, "requests_per_s": 129.4, "p50_ms": 240.0, "p95_ms": 300.0, "p99_ms": 340.0, "mean_server_inference_ms": null, "mode": "single", "concurrency": 32, "batch_size": 1, "predictions_per_s": 129.4}
+{"config": "1x1", "tool": "locust", "scenario": "batch50", "requests": 1954, "errors": 0, "requests_per_s": 149.9, "p50_ms": 52.0, "p95_ms": 65.0, "p99_ms": 71.0, "mean_server_inference_ms": null, "mode": "batch", "concurrency": 8, "batch_size": 50, "predictions_per_s": 7495.0}
+--- 1x32 deployed (cpu busy before: 23%)
+{"config": "1x32", "tool": "loadtest", "scenario": "probe", "mode": "single", "concurrency": 1, "batch_size": 1, "duration_s": 15.0, "requests": 603, "errors": 0, "requests_per_s": 40.2, "predictions_per_s": 40.2, "p50_ms": 30.62, "p95_ms": 32.2, "p99_ms": 32.99, "mean_server_inference_ms": 14.853}
+{"config": "1x32", "tool": "loadtest", "scenario": "single", "mode": "single", "concurrency": 32, "batch_size": 1, "duration_s": 15.0, "requests": 1531, "errors": 0, "requests_per_s": 102.1, "predictions_per_s": 102.1, "p50_ms": 179.45, "p95_ms": 934.47, "p99_ms": 1591.48, "mean_server_inference_ms": 8.937}
+{"config": "1x32", "tool": "loadtest", "scenario": "batch50", "mode": "batch", "concurrency": 8, "batch_size": 50, "duration_s": 15.0, "requests": 2137, "errors": 0, "requests_per_s": 142.5, "predictions_per_s": 7123.3, "p50_ms": 54.63, "p95_ms": 69.52, "p99_ms": 88.78, "mean_server_inference_ms": 3.261}
+{"config": "1x32", "tool": "loadtest", "scenario": "batch500", "mode": "batch", "concurrency": 4, "batch_size": 500, "duration_s": 15.0, "requests": 815, "errors": 0, "requests_per_s": 54.3, "predictions_per_s": 27166.7, "p50_ms": 64.08, "p95_ms": 98.2, "p99_ms": 359.83, "mean_server_inference_ms": 13.427}
+{"config": "1x32", "tool": "locust", "scenario": "single", "requests": 1308, "errors": 0, "requests_per_s": 100.5, "p50_ms": 310.0, "p95_ms": 390.0, "p99_ms": 420.0, "mean_server_inference_ms": null, "mode": "single", "concurrency": 32, "batch_size": 1, "predictions_per_s": 100.5}
+{"config": "1x32", "tool": "locust", "scenario": "batch50", "requests": 1771, "errors": 0, "requests_per_s": 135.5, "p50_ms": 55.0, "p95_ms": 81.0, "p99_ms": 98.0, "mean_server_inference_ms": null, "mode": "batch", "concurrency": 8, "batch_size": 50, "predictions_per_s": 6775.0}
+--- 2x32 deployed (cpu busy before: 25%)
+{"config": "2x32", "tool": "loadtest", "scenario": "probe", "mode": "single", "concurrency": 1, "batch_size": 1, "duration_s": 15.0, "requests": 624, "errors": 0, "requests_per_s": 41.6, "predictions_per_s": 41.6, "p50_ms": 30.05, "p95_ms": 32.29, "p99_ms": 33.47, "mean_server_inference_ms": 14.143}
+{"config": "2x32", "tool": "loadtest", "scenario": "single", "mode": "single", "concurrency": 32, "batch_size": 1, "duration_s": 15.0, "requests": 1404, "errors": 0, "requests_per_s": 93.6, "predictions_per_s": 93.6, "p50_ms": 266.88, "p95_ms": 919.31, "p99_ms": 1640.7, "mean_server_inference_ms": 10.044}
+{"config": "2x32", "tool": "loadtest", "scenario": "batch50", "mode": "batch", "concurrency": 8, "batch_size": 50, "duration_s": 15.0, "requests": 2098, "errors": 0, "requests_per_s": 139.9, "predictions_per_s": 6993.3, "p50_ms": 49.09, "p95_ms": 107.83, "p99_ms": 189.46, "mean_server_inference_ms": 2.7}
+{"config": "2x32", "tool": "loadtest", "scenario": "batch500", "mode": "batch", "concurrency": 4, "batch_size": 500, "duration_s": 15.0, "requests": 989, "errors": 0, "requests_per_s": 65.9, "predictions_per_s": 32966.7, "p50_ms": 51.48, "p95_ms": 70.15, "p99_ms": 347.07, "mean_server_inference_ms": 13.906}
+{"config": "2x32", "tool": "locust", "scenario": "single", "requests": 1663, "errors": 0, "requests_per_s": 127.5, "p50_ms": 240.0, "p95_ms": 290.0, "p99_ms": 400.0, "mean_server_inference_ms": null, "mode": "single", "concurrency": 32, "batch_size": 1, "predictions_per_s": 127.5}
+{"config": "2x32", "tool": "locust", "scenario": "batch50", "requests": 1955, "errors": 0, "requests_per_s": 150.2, "p50_ms": 51.0, "p95_ms": 68.0, "p99_ms": 81.0, "mean_server_inference_ms": null, "mode": "batch", "concurrency": 8, "batch_size": 50, "predictions_per_s": 7510.0}
+--- 4x32 deployed (cpu busy before: 40%)
+{"config": "4x32", "tool": "loadtest", "scenario": "probe", "mode": "single", "concurrency": 1, "batch_size": 1, "duration_s": 15.0, "requests": 475, "errors": 0, "requests_per_s": 31.7, "predictions_per_s": 31.7, "p50_ms": 31.48, "p95_ms": 32.8, "p99_ms": 33.96, "mean_server_inference_ms": 17.649}
+{"config": "4x32", "tool": "loadtest", "scenario": "single", "mode": "single", "concurrency": 32, "batch_size": 1, "duration_s": 15.0, "requests": 1351, "errors": 0, "requests_per_s": 90.1, "predictions_per_s": 90.1, "p50_ms": 192.7, "p95_ms": 1062.43, "p99_ms": 1632.03, "mean_server_inference_ms": 14.31}
+{"config": "4x32", "tool": "loadtest", "scenario": "batch50", "mode": "batch", "concurrency": 8, "batch_size": 50, "duration_s": 15.0, "requests": 1696, "errors": 0, "requests_per_s": 113.1, "predictions_per_s": 5653.3, "p50_ms": 60.05, "p95_ms": 140.3, "p99_ms": 235.88, "mean_server_inference_ms": 3.019}
+{"config": "4x32", "tool": "loadtest", "scenario": "batch500", "mode": "batch", "concurrency": 4, "batch_size": 500, "duration_s": 15.0, "requests": 960, "errors": 0, "requests_per_s": 64.0, "predictions_per_s": 32000.0, "p50_ms": 56.89, "p95_ms": 77.7, "p99_ms": 90.19, "mean_server_inference_ms": 16.76}
+{"config": "4x32", "tool": "locust", "scenario": "single", "requests": 1366, "errors": 0, "requests_per_s": 101.6, "p50_ms": 280.0, "p95_ms": 490.0, "p99_ms": 610.0, "mean_server_inference_ms": null, "mode": "single", "concurrency": 32, "batch_size": 1, "predictions_per_s": 101.6}
+{"config": "4x32", "tool": "locust", "scenario": "batch50", "requests": 1920, "errors": 0, "requests_per_s": 145.4, "p50_ms": 53.0, "p95_ms": 74.0, "p99_ms": 90.0, "mean_server_inference_ms": null, "mode": "batch", "concurrency": 8, "batch_size": 50, "predictions_per_s": 7270.0}
+[33m(raylet)[0m Task ServeController.graceful_shutdown failed. There are infinite retries remaining, so the task will be retried. Error: The actor is dead because it was killed by `ray.kill`.
+--- uvicorn baseline (cpu busy before: 48%)
+{"config": "uvicorn-1proc", "tool": "loadtest", "scenario": "probe", "mode": "single", "concurrency": 1, "batch_size": 1, "duration_s": 15.0, "requests": 4010, "errors": 0, "requests_per_s": 267.3, "predictions_per_s": 267.3, "p50_ms": 3.43, "p95_ms": 5.47, "p99_ms": 6.58, "mean_server_inference_ms": 0.698}
+{"config": "uvicorn-1proc", "tool": "loadtest", "scenario": "single", "mode": "single", "concurrency": 32, "batch_size": 1, "duration_s": 15.0, "requests": 2115, "errors": 0, "requests_per_s": 141.0, "predictions_per_s": 141.0, "p50_ms": 139.22, "p95_ms": 662.81, "p99_ms": 1035.09, "mean_server_inference_ms": 1.002}
+{"config": "uvicorn-1proc", "tool": "loadtest", "scenario": "batch50", "mode": "batch", "concurrency": 8, "batch_size": 50, "duration_s": 15.0, "requests": 2431, "errors": 0, "requests_per_s": 162.1, "predictions_per_s": 8103.3, "p50_ms": 28.71, "p95_ms": 72.9, "p99_ms": 135.4, "mean_server_inference_ms": 2.251}
+{"config": "uvicorn-1proc", "tool": "loadtest", "scenario": "batch500", "mode": "batch", "concurrency": 4, "batch_size": 500, "duration_s": 15.0, "requests": 1369, "errors": 0, "requests_per_s": 91.3, "predictions_per_s": 45633.3, "p50_ms": 38.86, "p95_ms": 66.18, "p99_ms": 101.33, "mean_server_inference_ms": 12.108}
+{"config": "uvicorn-1proc", "tool": "locust", "scenario": "single", "requests": 10548, "errors": 0, "requests_per_s": 810.0, "p50_ms": 38.0, "p95_ms": 49.0, "p99_ms": 62.0, "mean_server_inference_ms": null, "mode": "single", "concurrency": 32, "batch_size": 1, "predictions_per_s": 810.0}
+{"config": "uvicorn-1proc", "tool": "locust", "scenario": "batch50", "requests": 5778, "errors": 0, "requests_per_s": 443.6, "p50_ms": 17.0, "p95_ms": 23.0, "p99_ms": 29.0, "mean_server_inference_ms": null, "mode": "batch", "concurrency": 8, "batch_size": 50, "predictions_per_s": 22180.0}
+
+| config | tool | scenario | clients | rows/req | req/s | predictions/s | p50 ms | p95 ms | p99 ms | server ms (mean) | errors |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1x1 | loadtest | probe | 1 | 1 | 61.4 | 61.4 | 16.27 | 18.94 | 21.3 | 1.646 | 0 |
+| 1x1 | loadtest | single | 32 | 1 | 103.3 | 103.3 | 196.48 | 914.45 | 1427.94 | 2.12 | 0 |
+| 1x1 | loadtest | batch50 | 8 | 50 | 141.7 | 7083.3 | 54.23 | 73.7 | 97.51 | 3.251 | 0 |
+| 1x1 | loadtest | batch500 | 4 | 500 | 55.5 | 27766.7 | 65.54 | 84.4 | 348.4 | 13.188 | 0 |
+| 1x1 | locust | single | 32 | 1 | 129.4 | 129.4 | 240.0 | 300.0 | 340.0 | None | 0 |
+| 1x1 | locust | batch50 | 8 | 50 | 149.9 | 7495.0 | 52.0 | 65.0 | 71.0 | None | 0 |
+| 1x32 | loadtest | probe | 1 | 1 | 40.2 | 40.2 | 30.62 | 32.2 | 32.99 | 14.853 | 0 |
+| 1x32 | loadtest | single | 32 | 1 | 102.1 | 102.1 | 179.45 | 934.47 | 1591.48 | 8.937 | 0 |
+| 1x32 | loadtest | batch50 | 8 | 50 | 142.5 | 7123.3 | 54.63 | 69.52 | 88.78 | 3.261 | 0 |
+| 1x32 | loadtest | batch500 | 4 | 500 | 54.3 | 27166.7 | 64.08 | 98.2 | 359.83 | 13.427 | 0 |
+| 1x32 | locust | single | 32 | 1 | 100.5 | 100.5 | 310.0 | 390.0 | 420.0 | None | 0 |
+| 1x32 | locust | batch50 | 8 | 50 | 135.5 | 6775.0 | 55.0 | 81.0 | 98.0 | None | 0 |
+| 2x32 | loadtest | probe | 1 | 1 | 41.6 | 41.6 | 30.05 | 32.29 | 33.47 | 14.143 | 0 |
+| 2x32 | loadtest | single | 32 | 1 | 93.6 | 93.6 | 266.88 | 919.31 | 1640.7 | 10.044 | 0 |
+| 2x32 | loadtest | batch50 | 8 | 50 | 139.9 | 6993.3 | 49.09 | 107.83 | 189.46 | 2.7 | 0 |
+| 2x32 | loadtest | batch500 | 4 | 500 | 65.9 | 32966.7 | 51.48 | 70.15 | 347.07 | 13.906 | 0 |
+| 2x32 | locust | single | 32 | 1 | 127.5 | 127.5 | 240.0 | 290.0 | 400.0 | None | 0 |
+| 2x32 | locust | batch50 | 8 | 50 | 150.2 | 7510.0 | 51.0 | 68.0 | 81.0 | None | 0 |
+| 4x32 | loadtest | probe | 1 | 1 | 31.7 | 31.7 | 31.48 | 32.8 | 33.96 | 17.649 | 0 |
+| 4x32 | loadtest | single | 32 | 1 | 90.1 | 90.1 | 192.7 | 1062.43 | 1632.03 | 14.31 | 0 |
+| 4x32 | loadtest | batch50 | 8 | 50 | 113.1 | 5653.3 | 60.05 | 140.3 | 235.88 | 3.019 | 0 |
+| 4x32 | loadtest | batch500 | 4 | 500 | 64.0 | 32000.0 | 56.89 | 77.7 | 90.19 | 16.76 | 0 |
+| 4x32 | locust | single | 32 | 1 | 101.6 | 101.6 | 280.0 | 490.0 | 610.0 | None | 0 |
+| 4x32 | locust | batch50 | 8 | 50 | 145.4 | 7270.0 | 53.0 | 74.0 | 90.0 | None | 0 |
+| uvicorn-1proc | loadtest | probe | 1 | 1 | 267.3 | 267.3 | 3.43 | 5.47 | 6.58 | 0.698 | 0 |
+| uvicorn-1proc | loadtest | single | 32 | 1 | 141.0 | 141.0 | 139.22 | 662.81 | 1035.09 | 1.002 | 0 |
+| uvicorn-1proc | loadtest | batch50 | 8 | 50 | 162.1 | 8103.3 | 28.71 | 72.9 | 135.4 | 2.251 | 0 |
+| uvicorn-1proc | loadtest | batch500 | 4 | 500 | 91.3 | 45633.3 | 38.86 | 66.18 | 101.33 | 12.108 | 0 |
+| uvicorn-1proc | locust | single | 32 | 1 | 810.0 | 810.0 | 38.0 | 49.0 | 62.0 | None | 0 |
+| uvicorn-1proc | locust | batch50 | 8 | 50 | 443.6 | 22180.0 | 17.0 | 23.0 | 29.0 | None | 0 |
+
+cpu busy before each config (%): {'1x1': 62.2, '1x32': 23.4, '2x32': 25.3, '4x32': 39.7, 'uvicorn-1proc': 41.5}
+saved results\benchmark_20261125-182526.json
