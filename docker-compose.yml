@@ -1,0 +1,23 @@
+# `docker compose up --build` builds the image (including training) and
+# starts Ray Serve on http://localhost:8000.
+services:
+  no-show:
+    build: .
+    image: clinic-no-show-prediction:latest
+    ports:
+      - "8000:8000"          # Ray Serve HTTP proxy
+    environment:
+      NUM_REPLICAS: "2"      # horizontal scaling: model replicas inside the container
+      MAX_BATCH_SIZE: "32"   # @serve.batch max requests per model call
+      BATCH_WAIT_TIMEOUT_S: "0.005"  # max wait for a batch to fill (seconds)
+      MAX_ONGOING_REQUESTS: "64"     # per-replica concurrency (>= MAX_BATCH_SIZE)
+      MODEL_THREADS: "1"     # XGBoost threads per replica
+    # Ray keeps objects in /dev/shm; Docker's 64 MB default is too small and
+    # makes Ray fall back to slower /tmp storage with a warning.
+    shm_size: "1gb"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 12
+      start_period: 30s     # Ray start-up + model load

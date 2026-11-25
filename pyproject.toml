@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clinic-no-show-prediction"
+version = "0.1.0"
+description = "Real-time appointment no-show prediction served with Ray Serve (demo, synthetic data)."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Matheus Pombo Pedroso" }]
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "scikit-learn>=1.4",
+    "xgboost>=2.0",
+    "fastapi>=0.110",
+    "pydantic>=2.5",
+    "ray[serve]>=2.30",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27", "ruff==0.17.6"]
+bench = ["locust>=2.20", "httpx>=0.27", "psutil>=5.9", "uvicorn>=0.29"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: starts a local Ray Serve instance (slow; run with -m integration)"]
+addopts = "-m 'not integration'"

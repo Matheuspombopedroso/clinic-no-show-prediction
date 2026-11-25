@@ -1,0 +1,21 @@
+# Ray Serve config file. Run with:  serve run serve_config.yaml
+# (or deploy to a running cluster with: serve deploy serve_config.yaml)
+
+# HTTP proxy settings: one proxy per node routes requests to replicas.
+http_options:
+  host: 0.0.0.0   # listen on all interfaces (needed inside a container)
+  port: 8000
+
+applications:
+  - name: no-show
+    route_prefix: /
+    # Builder function: receives the `args` block below and returns the bound
+    # deployment (see noshow/serve_app.py::app_builder).
+    import_path: noshow.serve_app:app_builder
+    args:
+      model_dir: artifacts/no-show-xgb/1.0.0
+      num_replicas: 2            # horizontal scaling knob (1 model copy per replica)
+      max_batch_size: 32         # @serve.batch: max requests per model call
+      batch_wait_timeout_s: 0.005  # @serve.batch: max wait for a batch to fill
+      max_ongoing_requests: 64   # per-replica concurrency; must be >= max_batch_size
+      model_threads: 1           # XGBoost threads per replica

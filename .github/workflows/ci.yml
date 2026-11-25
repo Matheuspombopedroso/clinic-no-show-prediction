@@ -1,0 +1,30 @@
+# Continuous integration: lint + tests on every push and pull request.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]   # minimum supported + Docker image version
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install package with dev extras
+        run: pip install -e ".[dev]"
+      # ruff check = lint rules; ruff format --check = formatting drift.
+      - name: Lint
+        run: |
+          ruff check .
+          ruff format --check .
+      # Unit + API tests. Tests marked `integration` (they start Ray Serve)
+      # are excluded by default via pyproject's addopts.
+      - name: Tests
+        run: pytest -q
